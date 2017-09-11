@@ -1,7 +1,7 @@
 const app={
     mapaInicial: { //datos para generar el mapa inicial
         zoom: 7,
-        center: {lat: -16.3988900, lng: -71.5350000},
+        center: {lat: -16.3988900, lng: -71.5350000},//coordenadas de Arequipa
         mapTypeControl: false,
         zoomControl: false,
         streetViewControl:false
