@@ -42,4 +42,7 @@ const app={
     }
 }
 
-$(document).ready(app.iniciar);
+function initMap() {
+    app.iniciar();
+}
+
