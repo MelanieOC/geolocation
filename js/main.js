@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 const app={
     mapaInicial: { //datos para generar el mapa inicial
         zoom: 7,
@@ -38,7 +38,7 @@ const app={
         $("#encuentrame").click(app.buscar);
     },
     iniciar: ()=> {
-        app.ubicacionActual.mapa = new google.maps.Map($("#mapa")[0],app.mapaInicial);
+        app.ubicacionActual.mapa = new google.maps.Map($("#mapa")[0], app.mapaInicial);
         app.evento();
     }
 }
