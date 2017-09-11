@@ -1,3 +1,4 @@
+'use strict';
 const app={
     mapaInicial: { //datos para generar el mapa inicial
         zoom: 7,
