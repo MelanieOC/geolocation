@@ -1,38 +1,44 @@
-function initMap(){
-    var map = new google.maps.Map($("#map")[0],{
-        zoom: 7,
-        center: {lat: -16.3988900, lng: -71.5350000},
-        mapTypeControl: false,
-        zoomControl: false,
-        streetViewControl:false
-    });
+const app={
+  map : {
+      zoom: 7,
+      center: {lat: -16.3988900, lng: -71.5350000},
+      mapTypeControl: false,
+      zoomControl: false,
+      streetViewControl:false
+  },
 
-    function buscar(){
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(funcionExito,funcionError);
-        }
-    }
+  buscar: function (){
+      if(navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(app.funcionExito,app.funcionError);
+      }
+  },
+  latitud:null,
+  longitud: null,
+  funcionExito : function(posicion){
+      app.latitud = posicion.coords.latitude;
+      app.longitud= posicion.coords.longitude;
 
-    $("#encuentrame")[0].addEventListener("click",buscar);
-    var latitud,longitud;
+      var miUbicacion = new google.maps.Marker({
+          position: {lat:app.latitud, lng:app.longitud},
+          animation: google.maps.Animation.DROP,
+          map: app.map
+      });
 
-    var funcionExito = function(posicion){
-        latitud = posicion.coords.latitude;
-        longitud= posicion.coords.longitude;
+      app.map.zoom=17;
+      app.map.centerr={lat:app.latitud,lng:app.longitud};
+  },
 
-        var miUbicacion = new google.maps.Marker({
-            position: {lat:latitud, lng:longitud},
-            animation: google.maps.Animation.DROP,
-            map: map
-        });
+  funcionError : function(error){
+      alert("Tenemos un problema con encontrar tu ubicación");
+  },
+  iniciar: function () {
+    var map = new google.maps.Map($("#map")[0],app.map);
+    $("#encuentrame")[0].addEventListener("click",app.buscar);
+  }
 
-        map.setZoom(17);
-        map.setCenter({lat:latitud,lng:longitud});
-    }
-    
-    var funcionError = function(error){
-        alert("Tenemos un problema con encontrar tu ubicación");
-    }
+
 }
+function initMap(){
+    app.iniciar();
 
-
+}
