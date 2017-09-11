@@ -37,7 +37,7 @@ const app={
         $("#encuentrame").click(app.buscar);
     },
     iniciar: ()=> {
-        app.ubicacionActual.mapa = new google.maps.Map($("#map")[0],app.mapaInicial);
+        app.ubicacionActual.mapa = new google.maps.Map($("#mapa")[0],app.mapaInicial);
         app.evento();
     }
 }
